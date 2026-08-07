@@ -54,7 +54,22 @@ jobs:
             prefix:    "GKI_SukiSU"
             artifact:  "gki-suki"
             defconfig: "gki_defconfig"
-
+    
+     
+          - name:      "Custom CPU 2.2GHz"
+            source:    "gki"
+            ksu:       "none"
+            prefix:    "my-2.2GHz"
+            artifact:  "my-2.2GHz"
+            defconfig: "gki_defconfig"
+            clo_fragment: "vendor/bengal_GKI.config"
+      
+            env:
+              CONFIG_CPU_FREQ_MAX_STEP: "2200000"     # 2.2 ГГц на little-ядрах
+              CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL: "y"
+              CONFIG_CPU_FREQ_MIN_STEP: "100000"       
+         
+        
           - name:      "GKI-NoKSU"
             source:    "gki"
             ksu:       "none"
